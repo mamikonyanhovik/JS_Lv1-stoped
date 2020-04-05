@@ -63,6 +63,23 @@ return obj;
 
 console.log(elementInCount([1, 1, 2, 2, 3]))
 
+// Task 2 solution in class
+
+function frequency(arr){
+	let elemCounts = {};
+
+	for (let i = 0; i< arr.length; i++) {
+		if (arr[i] in elemCounts) {
+			elemCounts[arr[i]] +=1 / arr.length;
+		} else {
+			elemCounts[arr[i]] = 1 / arr.length;
+		}
+	}
+
+	return elemCounts;
+}
+console.log(elemCounts([1, 1, 2, 2, 3]))
+
 //Task number 3 new solution
 
 function numberOfTypes(arr) {
@@ -78,6 +95,22 @@ return (`Strings: ${str}, Numbers: ${num}`)
 }
 console.log(numberOfTypes([1, 4, 'i am a string', '456']))
 
+//task 3 solution in class short version
+
+function typesOf (arr) {
+	let numbersCount = 0;
+	let strCount = 0;
+	for(let i = 0; i< arr.length; i++) {
+		if(typeof arr[i] === 'number'){
+			numbersCount++; 
+		} else {
+			strCount++;
+		}
+	}
+
+	return `Numbers: ${numbersCount}, Strings: ${strCount}`
+}
+console.log(typesOf([1, 4, 'i am a string', '456']))
 
 // Old solution of 3 
 /* let array = [1, 4, 'i am a string', '456'];
@@ -107,5 +140,31 @@ function longest(sen) {
 }
 
 console.log(longest("A revolution without dancing is a revolution not worth having."))
+
+//Task 4 in class
+function getBiggiestWord (str) {
+	let result = 0;
+	let wordQuantity = 0;
+	let arr = str.split(",");
+		str = arr.join("");
+		arr = str.split("-");
+		str = arr.join("");
+		arr = str.split(".");
+		str = arr.join("");
+		arr = str.split(" ");
+		str = arr.join("");
+
+		for (let i = 0; i<arr.length; i++) {
+			if (arr[i].length >= wordQuantity) {
+				wordQuantity = arr[i].length;
+				result = arr[i];
+			}
+		}
+
+		return result;
+}
+
+console.log(getBiggiestWord("A revolution without dancing is a revolution not worth having."))
+
 
 // Task number 5
