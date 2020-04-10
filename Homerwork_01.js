@@ -167,7 +167,7 @@ function getBiggiestWord (str) {
 console.log(getBiggiestWord("A revolution without dancing is a revolution not worth having."))
 
 
-// Task number 5
+// Task number 5 in lesson
 //Write a function to find longest substring in a given a string without repeating characters except space character. If there are several, return the last one. Consider that all letters are lowercase
 
 function langsteSub(str) {
@@ -199,3 +199,30 @@ function langsteSub(str) {
 }
 
 console.log(langsteSub('12345123451234'));
+
+
+//task 5 2-rd lucum
+
+function longestLastSubstring(sentence) {
+	let result = '';
+
+	for (let i = 0; i < sentence.length; i++) {
+		let nestU = '';
+		for (let j = i; j < sentence.length; j++) {
+			if (nestU.indexOf(sentence[j]) === -1 || sentence[j] === ' ') {
+				nestU += sentence[j];
+			} else {
+				break;
+			}
+		}
+		if (nestU.length >= result.length) {
+			result = nestU;
+		}
+	}
+	return result;
+}
+
+console.log(longestLastSubstring('1234123'))
+//Task 6  in lesson
+
+
