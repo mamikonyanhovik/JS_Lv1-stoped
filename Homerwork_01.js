@@ -112,18 +112,6 @@ function typesOf (arr) {
 }
 console.log(typesOf([1, 4, 'i am a string', '456']))
 
-// Old solution of 3 
-/* let array = [1, 4, 'i am a string', '456'];
-let num = 0;
-let str = 0;
-for (let i = 0; i<array.length; i++) {
-  if (typeof(array[i]) == "number") {
-    num+=1;
-  } else if (typeof(array[i]) == "string"){
-    str+=1;  }
-}
-console.log(`Strings: ${str}, Numbers: ${num}`) */
-
 //Task number 4, but I can't set  comma or hyphen split.
 
 function longest(sen) {
@@ -168,7 +156,9 @@ console.log(getBiggiestWord("A revolution without dancing is a revolution not wo
 
 
 // Task number 5 in lesson
-//Write a function to find longest substring in a given a string without repeating characters except space character. If there are several, return the last one. Consider that all letters are lowercase
+/*Write a function to find longest substring in a given a string without
+ repeating characters except space character. If there are several, 
+ return the last one. Consider that all letters are lowercase */
 
 function langsteSub(str) {
 	let subStrArr = [];
@@ -223,6 +213,75 @@ function longestLastSubstring(sentence) {
 }
 
 console.log(longestLastSubstring('1234123'))
-//Task 6  in lesson
 
 
+//Task 6  during lesson
+
+function charReplacements(str) {
+	str = str.split("");
+	let threeChars = [];
+	for (let i = 0; i<Math.floor(str.length/3); i++) {
+		threeChars.push(str[3 * i + 1] + str[3 * i + 2] + str[3 * i]);
+	}
+	return (
+		threeChars.join("") +
+			str
+				.reverse()
+				.slice(0, str.length % 3)
+				.reverse()
+				.join("")
+				);
+}
+
+console.log(charReplacements('sdfghjkl'));
+
+// Task 7 
+/*Write a function, which receives an array as an argument which elements arrays of
+numbers. Find biggest negative number of each array. Return product of that numbers.If
+there is not any negative number in an array, ignore that one. Check that items of the
+given array are arrays. */
+function negativeNumbersProduct(arr) {
+	let areNegativeNumber = false;
+	let product = 1;
+	for (let i = 0; i < arr.length; i++) {
+		let bigNegativNumber = 1;
+		if (!Array.isArray(arr[i])) {
+			return 'Invalid Argument';		
+		}
+	
+		for (let j = 0; j < arr[i].length; j++) {
+			if (arr[i][j] < 0) {
+				areNegativeNumber = true;
+				if (arr[i][j] > bigNegativNumber || bigNegativNumber == 1) {
+					bigNegativNumber = arr[i][j];
+				}
+			}
+		}
+		product *=bigNegativNumber;
+	} 
+	if (!areNegativeNumber) {
+		return "No negatives";
+	}
+	return product;
+}
+
+console.log(negativeNumbersProduct([[2, -9, -3, 0], [1, 2], [-4 , -11, 0]]));
+
+
+// Task 8 
+/* Write a JavaScript function to get all possible subsets of length 3 of the given array.
+Assume that all elements in the array are unique. */
+function allPossibleSubsets(arr) {
+	let possibleSubsets = [];
+	for(let i = 0; i < arr.length; i++) {
+		for (let j = i+1; j < arr.length; j++) {
+			for (let k = j+1; k< arr.length; k++) {
+				possibleSubsets.push([arr[i], arr[j], arr[k]]);
+			}
+		}
+	}
+  
+	return possibleSubsets
+}
+
+console.log(allPossibleSubsets([5, 9, 23, 0, -2, -1]))
